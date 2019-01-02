@@ -14,13 +14,19 @@
 			} 
 		};
 
+		function getQueryString(name) { 
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+			var r = window.location.search.substr(1).match(reg); 
+			if (r != null) return unescape(r[2]); return null; 
+		} 
+
 		window.onload = function(){
 
 			var iframe = document.getElementById("iframe");
 			setIframeHeight(iframe);
 
 			var href = location.href;
-			var path = href.substring(href.lastIndexOf("/") + 1);
+			var path = getQueryString("s");
 
 			switch(path){
 				case "wms":
