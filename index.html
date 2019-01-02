@@ -1,12 +1,48 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title></title>
+    <title></title>
+	<style>
+
+		body {margin-left: 0px;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;overflow: hidden;}
+	</style>
+	<script type="text/javascript">
+		function setIframeHeight(iframe) {
+			if (iframe) { 
+				iframe.height = document.documentElement.scrollHeight || document.body.scrollHeight; 
+			} 
+		};
+
+		window.onload = function(){
+
+			var iframe = document.getElementById("iframe");
+			setIframeHeight(iframe);
+
+			var href = location.href;
+			var path = href.substring(href.lastIndexOf("/") + 1);
+
+			switch(path){
+				case "wms":
+					iframe.src = "http://111.230.28.136:8282";
+					break;
+				case "wms":
+					iframe.src = "http://111.230.28.136:8484";
+					break;
+				default:
+					iframe.src = "http://111.230.28.136:8282";
+			}
+			console.log(path)
+			//window.location.assign("http://111.230.28.136:8282")
+		}
+	</script>
 </head>
 <body>
 
-<script type="text/javascript">
-	window.location.replace("http://111.230.28.136:8282")
-</script>
+
+	<iframe id="iframe" frameborder="0" width="100%" />
+
 </body>
+
+
 </html>
